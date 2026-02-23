@@ -1,0 +1,344 @@
+(base) (env) tanu@Shreedevis-MacBook-Air QNN Trial % python3 server.py
+2026-02-20 22:37:36.485410: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+[ROUND 1] Server-side aggregation begun...
+
+ALPHA (TPR-weighted) has been calculated
+  Client 00 | True Positive Rate = 0.5000 | Alpha = 0.5217
+  Client 01 | True Positive Rate = 0.4583 | Alpha = 0.4783
+
+Global weights have been calculated. Sending global weights to clients...
+
+[ROUND 1] Server-side evaluation aggregation begun...
+
+Client 00 | Loss: 0.7282
+Metrics:
+  Specificity : 0.21518987341772153
+  True Positive Rate : 0.4583333333333333
+  Accuracy : 0.27184466019417475
+  Precision : 0.1506849315068493
+  False Positive Rate : 0.7848101265822784
+
+Client 01 | Loss: 0.6373
+Metrics:
+  Specificity : 0.3148148148148148
+  True Positive Rate : 0.4166666666666667
+  Accuracy : 0.3627450980392157
+  Precision : 0.3508771929824561
+  False Positive Rate : 0.6851851851851851
+
+[ROUND 1] Average evaluation loss across clients: 0.6827
+[ROUND 1] Average metrics across clients:
+  Specificity : 0.2650
+  True Positive Rate : 0.4375
+  Accuracy : 0.3173
+  Precision : 0.2508
+  False Positive Rate : 0.7350
+
+[ROUND 2] Server-side aggregation begun...
+
+ALPHA (TPR-weighted) has been calculated
+  Client 00 | True Positive Rate = 0.3125 | Alpha = 0.6000
+  Client 01 | True Positive Rate = 0.2083 | Alpha = 0.4000
+
+Global weights have been calculated. Sending global weights to clients...
+
+[ROUND 2] Server-side evaluation aggregation begun...
+
+Client 00 | Loss: 0.4510
+Metrics:
+  Specificity : 0.6851851851851852
+  True Positive Rate : 0.3958333333333333
+  Accuracy : 0.5490196078431373
+  Precision : 0.5277777777777778
+  False Positive Rate : 0.31481481481481477
+
+Client 01 | Loss: 0.4563
+Metrics:
+  Specificity : 0.5949367088607594
+  True Positive Rate : 0.375
+  Accuracy : 0.5436893203883495
+  Precision : 0.21951219512195122
+  False Positive Rate : 0.40506329113924056
+
+[ROUND 2] Average evaluation loss across clients: 0.4536
+[ROUND 2] Average metrics across clients:
+  Specificity : 0.6401
+  True Positive Rate : 0.3854
+  Accuracy : 0.5464
+  Precision : 0.3736
+  False Positive Rate : 0.3599
+
+[ROUND 3] Server-side aggregation begun...
+
+ALPHA (TPR-weighted) has been calculated
+  Client 00 | True Positive Rate = 0.3750 | Alpha = 0.5143
+  Client 01 | True Positive Rate = 0.3542 | Alpha = 0.4857
+
+Global weights have been calculated. Sending global weights to clients...
+
+[ROUND 3] Server-side evaluation aggregation begun...
+
+Client 00 | Loss: 0.2718
+Metrics:
+  Specificity : 0.810126582278481
+  True Positive Rate : 0.4583333333333333
+  Accuracy : 0.7281553398058253
+  Precision : 0.4230769230769231
+  False Positive Rate : 0.189873417721519
+
+Client 01 | Loss: 0.3431
+Metrics:
+  Specificity : 0.8703703703703703
+  True Positive Rate : 0.4166666666666667
+  Accuracy : 0.6568627450980392
+  Precision : 0.7407407407407407
+  False Positive Rate : 0.12962962962962965
+
+[ROUND 3] Average evaluation loss across clients: 0.3075
+[ROUND 3] Average metrics across clients:
+  Specificity : 0.8402
+  True Positive Rate : 0.4375
+  Accuracy : 0.6925
+  Precision : 0.5819
+  False Positive Rate : 0.1598
+
+[ROUND 4] Server-side aggregation begun...
+
+ALPHA (TPR-weighted) has been calculated
+  Client 00 | True Positive Rate = 0.5833 | Alpha = 0.5714
+  Client 01 | True Positive Rate = 0.4375 | Alpha = 0.4286
+
+Global weights have been calculated. Sending global weights to clients...
+
+[ROUND 4] Server-side evaluation aggregation begun...
+
+Client 00 | Loss: 0.1262
+Metrics:
+  Specificity : 0.9620253164556962
+  True Positive Rate : 0.5833333333333334
+  Accuracy : 0.8737864077669902
+  Precision : 0.8235294117647058
+  False Positive Rate : 0.03797468354430378
+
+Client 01 | Loss: 0.2941
+Metrics:
+  Specificity : 0.9074074074074074
+  True Positive Rate : 0.4791666666666667
+  Accuracy : 0.7058823529411765
+  Precision : 0.8214285714285714
+  False Positive Rate : 0.09259259259259256
+
+[ROUND 4] Average evaluation loss across clients: 0.2102
+[ROUND 4] Average metrics across clients:
+  Specificity : 0.9347
+  True Positive Rate : 0.5312
+  Accuracy : 0.7898
+  Precision : 0.8225
+  False Positive Rate : 0.0653
+
+[ROUND 5] Server-side aggregation begun...
+
+ALPHA (TPR-weighted) has been calculated
+  Client 00 | True Positive Rate = 0.4792 | Alpha = 0.4694
+  Client 01 | True Positive Rate = 0.5417 | Alpha = 0.5306
+
+Global weights have been calculated. Sending global weights to clients...
+
+[ROUND 5] Server-side evaluation aggregation begun...
+
+Client 00 | Loss: 0.1845
+Metrics:
+  Specificity : 0.8987341772151899
+  True Positive Rate : 0.5416666666666666
+  Accuracy : 0.8155339805825242
+  Precision : 0.6190476190476191
+  False Positive Rate : 0.10126582278481011
+
+Client 01 | Loss: 0.3039
+Metrics:
+  Specificity : 0.8888888888888888
+  True Positive Rate : 0.4791666666666667
+  Accuracy : 0.696078431372549
+  Precision : 0.7931034482758621
+  False Positive Rate : 0.11111111111111116
+
+[ROUND 5] Average evaluation loss across clients: 0.2442
+[ROUND 5] Average metrics across clients:
+  Specificity : 0.8938
+  True Positive Rate : 0.5104
+  Accuracy : 0.7558
+  Precision : 0.7061
+  False Positive Rate : 0.1062
+
+[ROUND 6] Server-side aggregation begun...
+
+ALPHA (TPR-weighted) has been calculated
+  Client 00 | True Positive Rate = 0.6250 | Alpha = 0.5172
+  Client 01 | True Positive Rate = 0.5833 | Alpha = 0.4828
+
+Global weights have been calculated. Sending global weights to clients...
+
+[ROUND 6] Server-side evaluation aggregation begun...
+
+Client 00 | Loss: 0.2941
+Metrics:
+  Specificity : 0.8518518518518519
+  True Positive Rate : 0.5416666666666666
+  Accuracy : 0.7058823529411765
+  Precision : 0.7647058823529411
+  False Positive Rate : 0.14814814814814814
+
+Client 01 | Loss: 0.1748
+Metrics:
+  Specificity : 0.8734177215189873
+  True Positive Rate : 0.6666666666666666
+  Accuracy : 0.8252427184466019
+  Precision : 0.6153846153846154
+  False Positive Rate : 0.12658227848101267
+
+[ROUND 6] Average evaluation loss across clients: 0.2344
+[ROUND 6] Average metrics across clients:
+  Specificity : 0.8626
+  True Positive Rate : 0.6042
+  Accuracy : 0.7656
+  Precision : 0.6900
+  False Positive Rate : 0.1374
+
+[ROUND 7] Server-side aggregation begun...
+
+ALPHA (TPR-weighted) has been calculated
+  Client 00 | True Positive Rate = 0.7500 | Alpha = 0.5538
+  Client 01 | True Positive Rate = 0.6042 | Alpha = 0.4462
+
+Global weights have been calculated. Sending global weights to clients...
+
+[ROUND 7] Server-side evaluation aggregation begun...
+
+Client 00 | Loss: 0.1456
+Metrics:
+  Specificity : 0.8860759493670886
+  True Positive Rate : 0.75
+  Accuracy : 0.8543689320388349
+  Precision : 0.6666666666666666
+  False Positive Rate : 0.11392405063291144
+
+Client 01 | Loss: 0.3039
+Metrics:
+  Specificity : 0.8333333333333334
+  True Positive Rate : 0.5416666666666666
+  Accuracy : 0.696078431372549
+  Precision : 0.7428571428571429
+  False Positive Rate : 0.16666666666666663
+
+[ROUND 7] Average evaluation loss across clients: 0.2248
+[ROUND 7] Average metrics across clients:
+  Specificity : 0.8597
+  True Positive Rate : 0.6458
+  Accuracy : 0.7752
+  Precision : 0.7048
+  False Positive Rate : 0.1403
+
+[ROUND 8] Server-side aggregation begun...
+
+ALPHA (TPR-weighted) has been calculated
+  Client 00 | True Positive Rate = 0.7917 | Alpha = 0.5588
+  Client 01 | True Positive Rate = 0.6250 | Alpha = 0.4412
+
+Global weights have been calculated. Sending global weights to clients...
+
+[ROUND 8] Server-side evaluation aggregation begun...
+
+Client 00 | Loss: 0.1553
+Metrics:
+  Specificity : 0.8860759493670886
+  True Positive Rate : 0.7083333333333334
+  Accuracy : 0.8446601941747572
+  Precision : 0.6538461538461539
+  False Positive Rate : 0.11392405063291144
+
+Client 01 | Loss: 0.2941
+Metrics:
+  Specificity : 0.8333333333333334
+  True Positive Rate : 0.5625
+  Accuracy : 0.7058823529411765
+  Precision : 0.75
+  False Positive Rate : 0.16666666666666663
+
+[ROUND 8] Average evaluation loss across clients: 0.2247
+[ROUND 8] Average metrics across clients:
+  Specificity : 0.8597
+  True Positive Rate : 0.6354
+  Accuracy : 0.7753
+  Precision : 0.7019
+  False Positive Rate : 0.1403
+
+[ROUND 9] Server-side aggregation begun...
+
+ALPHA (TPR-weighted) has been calculated
+  Client 00 | True Positive Rate = 0.6042 | Alpha = 0.5472
+  Client 01 | True Positive Rate = 0.5000 | Alpha = 0.4528
+
+Global weights have been calculated. Sending global weights to clients...
+
+[ROUND 9] Server-side evaluation aggregation begun...
+
+Client 00 | Loss: 0.2549
+Metrics:
+  Specificity : 0.8518518518518519
+  True Positive Rate : 0.625
+  Accuracy : 0.7450980392156863
+  Precision : 0.7894736842105263
+  False Positive Rate : 0.14814814814814814
+
+Client 01 | Loss: 0.1650
+Metrics:
+  Specificity : 0.8860759493670886
+  True Positive Rate : 0.6666666666666666
+  Accuracy : 0.8349514563106796
+  Precision : 0.64
+  False Positive Rate : 0.11392405063291144
+
+[ROUND 9] Average evaluation loss across clients: 0.2100
+[ROUND 9] Average metrics across clients:
+  Specificity : 0.8690
+  True Positive Rate : 0.6458
+  Accuracy : 0.7900
+  Precision : 0.7147
+  False Positive Rate : 0.1310
+
+[ROUND 10] Server-side aggregation begun...
+
+ALPHA (TPR-weighted) has been calculated
+  Client 00 | True Positive Rate = 0.7500 | Alpha = 0.5373
+  Client 01 | True Positive Rate = 0.6458 | Alpha = 0.4627
+
+Global weights have been calculated. Sending global weights to clients...
+
+[ROUND 10] Server-side evaluation aggregation begun...
+
+Client 00 | Loss: 0.1650
+Metrics:
+  Specificity : 0.8734177215189873
+  True Positive Rate : 0.7083333333333334
+  Accuracy : 0.8349514563106796
+  Precision : 0.6296296296296297
+  False Positive Rate : 0.12658227848101267
+
+Client 01 | Loss: 0.2647
+Metrics:
+  Specificity : 0.8333333333333334
+  True Positive Rate : 0.625
+  Accuracy : 0.7352941176470589
+  Precision : 0.7692307692307693
+  False Positive Rate : 0.16666666666666663
+
+[ROUND 10] Average evaluation loss across clients: 0.2149
+[ROUND 10] Average metrics across clients:
+  Specificity : 0.8534
+  True Positive Rate : 0.6667
+  Accuracy : 0.7851
+  Precision : 0.6994
+  False Positive Rate : 0.1466
+(base) (env) tanu@Shreedevis-MacBook-Air QNN Trial % 
