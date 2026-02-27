@@ -2,6 +2,7 @@ import flwr as fl
 import numpy as np
 import os
 import logging
+import pickle
 
 # minimise chattiness
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
@@ -10,6 +11,7 @@ os.environ["GRPC_TRACE"] = ""
 
 logging.getLogger("flwr").setLevel(logging.ERROR)
 
+NUM_ROUNDS = 10
 
 class FedTPR(fl.server.strategy.FedAvg):
 
@@ -18,6 +20,8 @@ class FedTPR(fl.server.strategy.FedAvg):
             on_fit_config_fn=self.fit_config,
             on_evaluate_config_fn=self.eval_config
         )
+        self.final_global_weights = None
+        self.client_final_weights = {}  # stores last weights per client
 
     def fit_config(self, rnd: int):
         return {"rnd": rnd}
@@ -34,21 +38,22 @@ class FedTPR(fl.server.strategy.FedAvg):
         weights_list = []
         tp_list = []
 
-        for _, fit_res in results:
+        for i, (_, fit_res) in enumerate(results):
             w = fit_res.parameters
             metrics = fit_res.metrics
-            # Clients now send true_positives in their fit metrics
             tp = metrics.get("true_positives", 1.0)
 
             weights_list.append(w)
             tp_list.append(tp)
 
+            # Save each client's weights every round (overwrites, so final round sticks)
+            if rnd == NUM_ROUNDS:
+                w_nd = fl.common.parameters_to_ndarrays(w)
+                self.client_final_weights[i] = w_nd
+
         tp_array = np.array(tp_list, dtype=np.float64)
 
-        # Alpha proportional to true positives
-        # Clients with more TPs are trusted more
         if np.allclose(tp_array, 0.0):
-            # All clients have 0 TPs — fallback to equal weighting
             alpha = np.ones(len(tp_array)) / len(tp_array)
         else:
             total_tp = tp_array.sum()
@@ -58,7 +63,6 @@ class FedTPR(fl.server.strategy.FedAvg):
         for i in range(len(tp_array)):
             print(f"  Client {i:02d} | True Positive Rate = {tp_array[i]:.4f} | Alpha = {alpha[i]:.4f}")
 
-        # Weighted aggregation
         agg_weights = [
             np.zeros_like(w)
             for w in fl.common.parameters_to_ndarrays(weights_list[0])
@@ -71,13 +75,29 @@ class FedTPR(fl.server.strategy.FedAvg):
 
         aggregated_parameters = fl.common.ndarrays_to_parameters(agg_weights)
 
+        # Save global weights — final round overwrites with the last aggregation
+        self.final_global_weights = agg_weights
+
+        # On the last round, save everything to disk
+        if rnd == NUM_ROUNDS:
+            print("\n[FINAL ROUND] Saving weights to disk...")
+            os.makedirs("saved_weights", exist_ok=True)
+
+            np.save("saved_weights/global_weights.npy",
+                    np.array(agg_weights, dtype=object))
+
+            for client_id, w_nd in self.client_final_weights.items():
+                np.save(f"saved_weights/client{client_id:02d}_weights.npy",
+                        np.array(w_nd, dtype=object))
+
+            print("  saved_weights/global_weights.npy")
+            for client_id in self.client_final_weights:
+                print(f"  saved_weights/client{client_id:02d}_weights.npy")
+
         print("\nGlobal weights have been calculated. Sending global weights to clients...")
         return aggregated_parameters, {"alpha": alpha.tolist()}
 
     def aggregate_evaluate(self, rnd, results, failures):
-        """
-        Aggregate evaluation results from clients.
-        """
         if not results:
             return None, {}
 
